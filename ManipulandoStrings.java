@@ -16,35 +16,38 @@ public class ManipulandoStrings {
     }
     
     //separando os caracteres da STRING e os retornando
-    public ArrayList<Character> retornaListaCharDaString(){
-        if(estaNull() == true)
-            return null;
-        ArrayList<Character> listaCaracteres = new ArrayList<Character>();
-        for(int i = 0; i < umaString.length()-1; i++){
+    public void listaCharDaString(){
+        if(Testes.TesteStringNulla(umaString))
+            throw new NullPointerException("NullString");
+        ArrayList<Character> listaCaracteres = new ArrayList<>();
+        for(int i = 0; i < umaString.length(); i++){
             listaCaracteres.add(umaString.charAt(i));
         }
-        return listaCaracteres;
+        for(Character x: listaCaracteres)
+            System.out.println(x);
     }
     
     //retira uma SUBSTRING de um ponto expecifico da STRING até o seu final
-    public String retornaSubString(int inicio){
-        if(inicio > umaString.length()-1)
-            return null;
+    public void subString(int inicio){
+        if(Testes.ExcecaoDePontoNullo(inicio, umaString.length()-1))
+            throw new NullPointerException("OutOfRange");
         String subString = umaString.substring(inicio);
-        return subString;
+        System.out.println(subString);
     }
     
-    //retorna string em caixa baixa
-    public String retornaStringCaixaBaixa(){
-        if(estaNull() == true)
-            return null;
+    //printa STRING em caixa baixa
+    public void stringCaixaBaixa(){
+        if(Testes.TesteStringNulla(umaString))
+            throw new NullPointerException("NullString");
         String lowerString = umaString.toLowerCase();
-        return lowerString;
+        System.out.println(lowerString);
     }
     
-    public boolean estaNull(){
-        if(umaString == null)
-            return true;
-        return false;
+    //printa STRING em caixa alta
+    public void stringCaixaAlta(){
+        if(Testes.TesteStringNulla(umaString))
+            throw new NullPointerException("NullString");
+        String uperString = umaString.toUpperCase();
+        System.out.println(uperString);
     }
 }
